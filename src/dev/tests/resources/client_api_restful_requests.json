@@ -1,0 +1,25 @@
+{
+    "createOAuthApiToken": {
+        "restrictions": {
+            "recipientsIds": ["c56f5905-4449-46f0-9980-cf60818391d6"],
+            "servicesIds": ["SMARTFIT_API"],
+            "eventsIds": ["PAYMENT_CONFIRMED"]
+        },
+        "roles": ["LIST_DELIVERED_MESSAGES", "RESEND_DELIVERED_MESSAGES"]
+    },
+    "sendMessage" : {
+        "recipientId": "c56f5905-4449-46f0-9980-cf60818391d6",
+        "serviceId": "SMARTFIT_API",
+        "eventId": "PAYMENT_CONFIRMED",
+        "type": "http",
+        "message": {
+            "headers": {
+                "Content-Type": "multipart/form-data"
+            }
+        },
+        "retryPolicy": {
+            "maxAttempts": 5,
+            "interval": ["1m", "5m", "1d", "3d", "7d"]
+        }
+    }
+}

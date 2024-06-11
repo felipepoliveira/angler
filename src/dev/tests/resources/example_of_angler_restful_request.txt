@@ -1,0 +1,32 @@
+POST /upload HTTP/1.1
+Host: example.com
+Content-Type: multipart/form-data; boundary=---------------------------974767299852498929531610575
+Content-Length: [length]
+
+-----------------------------974767299852498929531610575
+Content-Disposition: form-data; name="metadata"
+Content-Type: application/json
+
+{
+    "sendMessage" : {
+        "recipientId": "c56f5905-4449-46f0-9980-cf60818391d6",
+        "serviceId": "SMARTFIT_API",
+        "eventId": "PAYMENT_CONFIRMED",
+        "type": "http",
+        "message": {
+            "headers": {
+                "Content-Type": "multipart/form-data"
+            }
+        },
+        "retryPolicy": {
+            "maxAttempts": 5,
+            "interval": ["1m", "5m", "1d", "3d", "7d"]
+        }
+    }
+}
+-----------------------------974767299852498929531610575
+Content-Disposition: form-data; name="data"
+Content-Type: image/jpeg
+
+[contents of the profile.jpg file]
+-----------------------------974767299852498929531610575--

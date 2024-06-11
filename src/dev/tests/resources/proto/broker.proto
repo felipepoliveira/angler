@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+// The request made by the broker to authenticate in the cluster
+message BrokerAuthenticationRequest {
+    // The ID of the broker. It must be unique for all registered brokers on controller
+    string id = 1;
+    // The authentication token used to authenticate with the controller
+    string authToken = 2;
+}
+
+// The Response of BrokerAuthenticationRequest
+message BrokerAuthenticationResponse {
+    // Flag that indicates success
+    bool success = 1;
+    // Used to identify the response
+    int32 code = 2;
+}
+
+// The request made by the broker to tell the controller that a message was successfully sent to the recipient
+message ConfirmMessageSentRequest {
+    // The ID of the delivered message
+    string messageId = 1;
+}
+
+// Response for ConfirmMessageSentRequest
+message ConfirmMessageSentResponse {
+    // Flag that indicates success
+    bool success = 1;
+    // Used to identify the response
+    int32 code = 2;
+}
+
+// The request made by the broker to signal that is operating normally
+message HealthCheckRequest {}
+
+// Response for HealthCheckRequest
+message HealthCheckResponse {
+    // Flag that indicates success
+    bool success = 1;
+    // Used to identify the response
+    int32 code = 2;
+}
